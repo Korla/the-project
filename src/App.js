@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <div>
         <TopNav />
-        <Route exact path="/" component={Home} />
+        <Route path="/" component={Home} />
         <Route exact path="/details/:id" component={Details} />
       </div>
     </BrowserRouter>
