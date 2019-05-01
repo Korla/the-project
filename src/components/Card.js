@@ -13,7 +13,8 @@ import red from '@material-ui/core/colors/red';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import factory1 from '../images/factory1.jpg';
+import { db } from '../db.js';
+import { withRouter } from 'react-router-dom/cjs/react-router-dom';
 
 const styles = {
   avatar: {
@@ -29,13 +30,12 @@ const styles = {
 
 function MediaCard(props) {
   const { classes } = props;
+  const { factory1 } = db;
   return (
     <Card className={classes.card}>
       <CardHeader
         avatar={
-          <Avatar aria-label="Recipe" className={classes.avatar}>
-            M
-          </Avatar>
+          <Avatar aria-label="Recipe" className={classes.avatar}>{factory1.avatar}</Avatar>
         }
         action={
           <IconButton>
@@ -43,31 +43,19 @@ function MediaCard(props) {
           </IconButton>
         }
         title="New listed company"
-        subheader="September 14, 2016"
+        subheader="September 14, 2018"
       />
-      <CardActionArea>
+      <CardActionArea onClick={() => props.history.push('details/factory1')}>
         <CardMedia
           className={classes.media}
-          image={factory1}
-          title="Max Milk Inc."
+          image={factory1.image}
+          title={factory1.title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Max Milk Inc.
-          </Typography>
-          <Typography component="p">
-            After investing in an all new factory, this young company is ready to topple the milk giants.
-          </Typography>
+          <Typography gutterBottom variant="h5" component="h2">{factory1.title}</Typography>
+          <Typography component="p">{factory1.description}</Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
     </Card>
   );
 }
@@ -76,4 +64,4 @@ MediaCard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MediaCard);
+export default withRouter(withStyles(styles)(MediaCard));

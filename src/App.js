@@ -1,24 +1,19 @@
 import React from 'react';
 import TopNav from './components/TopNav';
-import Card from './components/Card';
-import { withStyles } from '@material-ui/styles';
+import { BrowserRouter, Route } from "react-router-dom";
+import Home from './routes/Home';
+import Details from './routes/Details';
 
-const styles = {
-  cards: {
-    flexGrow: 1,
-    padding: 20
-  },
-};
-
-function App({ classes }) {
+function App() {
   return (
-    <div>
-      <TopNav></TopNav>
-      <div className={classes.cards}>
-        <Card></Card>
+    <BrowserRouter>
+      <div>
+        <TopNav />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/details/:id" component={Details} />
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
-export default withStyles(styles)(App);
+export default App;
