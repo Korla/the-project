@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TopNav from './components/TopNav';
+import Card from './components/Card';
+import { withStyles } from '@material-ui/styles';
 
-function App() {
+const styles = {
+  cards: {
+    flexGrow: 1,
+    padding: 20
+  },
+};
+
+function App({ classes }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TopNav></TopNav>
+      <div className={classes.cards}>
+        <Card></Card>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default withStyles(styles)(App);
