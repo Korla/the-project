@@ -12,7 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { db } from '../db.js';
-import { withRouter } from 'react-router-dom/cjs/react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const styles = {
   avatar: {
